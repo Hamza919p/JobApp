@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"reactSnippets.settings.importReactOnTop": true
+	}
+}
