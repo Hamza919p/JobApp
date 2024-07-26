@@ -8,12 +8,31 @@ import useFetch from "../../hook/useFetch";
 const Jobdetails = () => {
     const router = useRouter()
     const params = useGlobalSearchParams()
-    console.log(params)
     const { data, isLoading, error, refetch } = useFetch('job-details', { job_id : params.id })
-    console.log(`Logging data === ${data.length}`)
+    
     const onRefresh = () => {}
 
     const [refreshing, setRefreshing] = useState(false)
+
+    //Info related to Tabs
+    const tabs = ["About", "Qualifications", "Responsibilities"];
+    const [activeTab, setActiveTab] = useState(tabs[0]);
+
+    const displayTabContent = () => {
+        switch(activeTab) {
+            case "About":
+                break;
+            case "Qualifications":
+                return <Specifics 
+                    title = {"Qualifications"}
+                    points = { data[0].job_highlights?.Qualifications ?? ['N/A'] }
+                />
+            case "Responsibilities":
+            default:
+                break;
+
+        }
+    }
 
     return (
        
@@ -59,7 +78,16 @@ const Jobdetails = () => {
                                     Location = { data[0].job_country }
                                  />
 
-                                 <JobTabs />   
+                                 <JobTabs 
+                                    tabs = {tabs}
+                                    activeTab = {activeTab}
+                                    setActiveTab = {setActiveTab}
+                                 />  
+
+                                 {
+                                    displayTabContent()
+                                 }
+
                             </View> )
                         }
 
