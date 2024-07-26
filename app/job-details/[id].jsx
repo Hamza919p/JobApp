@@ -30,6 +30,10 @@ const Jobdetails = () => {
                     points = { data[0].job_highlights?.Qualifications ?? ['N/A'] }
                 />
             case "Responsibilities":
+                return <Specifics 
+                    title = {"Responsibilities"}
+                    points = { data[0].job_highlights?.Responsibilities ?? ['N/A'] }
+                />
             default:
                 break;
 
@@ -62,6 +66,7 @@ const Jobdetails = () => {
             }}/>
 
             <>
+                
                 <ScrollView 
                     showsVerticalScrollIndicator = {false} 
                     refreshControl = { 
@@ -89,11 +94,20 @@ const Jobdetails = () => {
                                  {
                                     displayTabContent()
                                  }
+                                  {/* Apply button */}           
+                                  <JobFooter url = { data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results' }/>  
+
 
                             </View> )
                         }
 
+                       
+
                 </ScrollView>
+
+
+
+                   
             </>
 
        </SafeAreaView>        
