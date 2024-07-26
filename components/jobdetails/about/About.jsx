@@ -3,10 +3,11 @@ import { View, Text } from 'react-native'
 
 import styles from './about.style'
 
-const About = () => {
+const About = ( {info} ) => {
   return (
-    <View>
-      <Text>About</Text>
+    <View style = {styles.container} >
+      <Text style = { styles.headText } >About:</Text>
+      <Text style = { styles.contextText } > { info } </Text>
     </View>
   )
 }
